@@ -1,7 +1,10 @@
-from Control import Control, ControlName
+from Laser import Laser
+
+
+def run_tests() -> None:
+    test_case()
+
 
 def test_case() -> None:
-    for control in ControlName:
-        Control.get_control_value(control)
-    
-    Control.show_cache()
+    # from Laser import Laser
+    Laser.print_config()

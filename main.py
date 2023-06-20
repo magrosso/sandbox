@@ -1,14 +1,13 @@
-from Test import test_case
-from Application import Application
-from Control import Control
-
+from Laser import Laser
+import Test
 
 
 def main():
-    app = Application()
-
-    test_case()
-
+    Laser.print_config()
+    Laser.save_config()
+    Test.run_tests()
+    # Laser.clear_config()
+    Laser.print_config()
 
 
 if __name__ == "__main__":
