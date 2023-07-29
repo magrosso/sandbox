@@ -4,7 +4,7 @@ import pytest
 
 
 @pytest.mark.parametrize(
-    "value, src_unit, result, target_unit",
+    "value, src_exp, result, target_exp",
     [
         (1, "", 1_000_000, "µ"),  # 1 to micro
         (1, "n", 0.001, "µ"),  # nano to micro
@@ -20,11 +20,11 @@ import pytest
         (1, "m", 1_000_000_000, "p"),  # milli to pico
     ],
 )
-def test_convert_to_unit(value: float, src_unit: str, result: float, target_unit: str) -> None:
-    result_as_target_unit: float = convert_to_unit(source_value=value, source_unit=src_unit, target_unit=target_unit)
+def test_convert_to_unit(value: float, src_exp: str, result: float, target_exp: str) -> None:
+    result_as_target_unit: float = convert_to_unit(source_value=value, source_exp=src_exp, target_exp=target_exp)
     assert (
         result_as_target_unit == result
-    ), f"Failed to convert {value} {src_unit} to {result_as_target_unit} {target_unit}, expected {result} {target_unit}"
+    ), f"Failed to convert {value} {src_exp} to {result_as_target_unit} {target_exp}, expected {result} {target_exp}"
 
 
 @pytest.mark.parametrize(
@@ -38,5 +38,5 @@ def test_convert_to_unit(value: float, src_unit: str, result: float, target_unit
 )
 def test_convert_to_micro_raises_ValueError(value: float, unit: str, result) -> None:
     with pytest.raises(ValueError) as ex_info:
-        result_micro: float = convert_to_micro(source_value=value, source_unit=unit)
+        result_micro: float = convert_to_micro(source_value=value, source_exp=unit)
     print(f"{ex_info.type}: {ex_info.value}")
