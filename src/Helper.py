@@ -1,11 +1,9 @@
 from enum import Enum
 from functools import partial
 
-# import math
-
 
 class Exponent(Enum):
-    ZERO = 0
+    NONE = 0
     MILLI = -3
     MICRO = -6
     NANO = -9
@@ -18,7 +16,7 @@ def convert_to_unit(source_value: float, source_exp: str, target_exp: str) -> fl
         "n": Exponent.NANO,
         "µ": Exponent.MICRO,
         "m": Exponent.MILLI,
-        "": Exponent.ZERO,
+        "": Exponent.NONE,
     }
     try:
         calc_exp: int = exp[source_exp].value - exp[target_exp].value

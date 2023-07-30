@@ -11,6 +11,18 @@ import pytest
         (0.0, "µ", 0.0, "µ"),  # micro to micro
         (0.0, "n", 0.0, "µ"),  # nano to micro
         (0.0, "p", 0.0, "µ"),  # pico to micro
+        # to none
+        (1.0, "", 1.0, ""),  # 1 to none
+        (1.0, "m", 0.001, ""),  # milli to none
+        (1.0, "µ", 0.000001, ""),  # micro to none
+        (1.0, "n", 0.000000001, ""),  # nano to none
+        (1.0, "p", 0.000000000001, ""),  # pico to none
+        # to milli
+        (1.0, "", 1_000, "m"),  # 1 to milli
+        (1.0, "m", 1.0, "m"),  # milli to milli
+        (1.0, "µ", 0.001, "m"),  # micro to milli
+        (1.0, "n", 0.000001, "m"),  # nano to milli
+        (1.0, "p", 0.000000001, "m"),  # pico to milli
         # to micro
         (1.0, "", 1_000_000, "µ"),  # 1 to micro
         (1.0, "m", 1_000, "µ"),  # milli to micro
@@ -48,11 +60,11 @@ import pytest
         (-1.9, "n", -1_900, "p"),  # nano to pico
         (-1.9, "p", -1.9, "p"),  # pico to pico
         # to micro
-        (345.07, "", 345_070_000, "µ"),  # to micro
-        (345.07, "m", 345_070, "µ"),  # milli to micro
-        (345.07, "µ", 345.07, "µ"),  # micro to micro
-        (345.07, "n", 0.34507, "µ"),  # nano to micro
-        (345.07, "p", 0.00034507, "µ"),  # pico to micro
+        (345.073, "", 345_073_000, "µ"),  # to micro
+        (345.073, "m", 345_073, "µ"),  # milli to micro
+        (345.073, "µ", 345.073, "µ"),  # micro to micro
+        (345.073, "n", 0.345073, "µ"),  # nano to micro
+        (345.073, "p", 0.000345073, "µ"),  # pico to micro
         # to nano
         (345.07, "", 345_070_000_000, "n"),  # 1 to nano
         (345.07, "m", 345_070_000, "n"),  # milli to nano
