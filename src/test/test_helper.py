@@ -6,6 +6,12 @@ import pytest
 @pytest.mark.parametrize(
     "src_value, src_exp, result, target_exp",
     [
+        (0.0, "", 0.0, "µ"),  # 1 to micro
+        (0.0, "m", 0.0, "µ"),  # milli to micro
+        (0.0, "µ", 0.0, "µ"),  # micro to micro
+        (0.0, "n", 0.0, "µ"),  # nano to micro
+        (0.0, "p", 0.0, "µ"),  # pico to micro
+        # to micro
         (1.0, "", 1_000_000, "µ"),  # 1 to micro
         (1.0, "m", 1_000, "µ"),  # milli to micro
         (1.0, "µ", 1.0, "µ"),  # micro to micro
